@@ -36,7 +36,7 @@ SELECT State_Name, COUNT(State_Name)
 FROM ushouseholdincome
 GROUP BY State_Name
 ;
-#identified errors with Georgia and Alabama
+#identified errors with Georgia & Alabama
 
 
 UPDATE USHouseholdIncome
@@ -56,7 +56,7 @@ FROM ushouseholdincome
 WHERE County = 'Autauga County'
 ORDER BY 1
 ;
-#spotted an error with Autauga County earlier and isolated it here
+#spotted an error with Autauga County earlier & isolated it here
 
 UPDATE ushouseholdincome
 SET Place = 'Autaugaville'
@@ -65,6 +65,22 @@ AND City = 'Vinemont'
 ;
 #fixed error
 
+UPDATE ushouseholdincome
+SET County = UPPER(County);
+
+UPDATE ushouseholdincome
+SET City = UPPER(City);
+
+UPDATE ushouseholdincome
+SET Place = UPPER(Place);
+
+UPDATE ushouseholdincome
+SET State_Name = UPPER(State_Name);
+
+UPDATE ushouseholdincome
+SET State_ab = UPPER(State_ab);
+
+#its best we standardize the County, City, Place, State_Name, & State_ab
 
 SELECT Type, COUNT(Type)
 FROM ushouseholdincome
